@@ -1,0 +1,37 @@
+.navbar {
+    background-color: #f9f9fc !important;
+}
+
+.navbar-nav {
+    display: flex;
+    width: 75%;
+    gap: 5px;
+}
+
+.nav-item {
+    flex: 1;
+    text-align: center;
+}
+
+.navbar-brand {
+    font-weight: 500;
+    transform: scale(1.15);
+    transform-origin: left center;
+}
+
+.nav-link {
+    transform: scale(1.1);
+    transform-origin: left center;
+}
+
+.navbar-nav {
+    padding-left: 50px;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 35px;
+}
+
+.nav-link.active {
+    border-bottom: 2px solid #007bff;
+}
