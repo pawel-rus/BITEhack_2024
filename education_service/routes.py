@@ -2,16 +2,14 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for, f
 from models import Lesson  
 
 def init_routes(app):
-    @app.route('/')
+    @app.route('/lessons')
     def index():
         """Strona główna - lista lekcji"""
         lessons = Lesson.get_all_lessons() 
          # get all available lessons  from database
-        lessons_data = [
-            {"id": lesson.id, "title": lesson.title, "description": lesson.description}
-            for lesson in lessons
-        ]
-        return jsonify(lessons_data)
+        lessons_data = [{"id": lesson.id, "title": lesson.title, "description": lesson.description} for lesson in lessons]
+
+        return jsonify(lessons_data), 200
         #return render_template('index.html', lessons=lessons)
 
     @app.route('/lesson/<int:lesson_id>')
@@ -24,7 +22,7 @@ def init_routes(app):
                 "title": lesson.title,
                 "description": lesson.description
             }
-            return jsonify(lesson_data)  # Zwracamy dane w formacie JSON
+            return jsonify(lesson_data), 200  # Zwracamy dane w formacie JSON
         else:
             return jsonify({"error": "Lekcja nie została znaleziona!"}), 404
 
