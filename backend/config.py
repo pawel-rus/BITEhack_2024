@@ -3,7 +3,7 @@ from urllib.parse import quote_plus
 
 #postgresql://postgres:GWnQGFuMpUnZxayhsYrtEdGoOnXUxCpd@junction.proxy.rlwy.net:37394/railway
 
-password = quote_plus(os.getenv('DB_PASSWORD', 'GWnQGFuMpUnZxayhsYrtEdGoOnXUxCpd'))
+password = quote_plus(os.getenv('DB_PASSWORD', 'API_KEY'))
 db_host = os.getenv('DB_HOST', 'junction.proxy.rlwy.net')
 db_port = os.getenv('DB_PORT', '37394')
 db_name = os.getenv('DB_NAME', 'railway')
