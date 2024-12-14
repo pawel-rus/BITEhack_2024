@@ -1,38 +1,30 @@
-# routes.py
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash
+from models import Lesson  
 
-routes = Blueprint('routes', __name__)
+def init_routes(app):
+    @app.route('/')
+    def index():
+        """Strona główna - lista lekcji"""
+        lessons = Lesson.get_all_lessons()  # get all available lessons  from database
+        return render_template('index.html', lessons=lessons)
 
-# Sample lesson data
-lessons = [
-    {'id': 1, 'title': 'Wprowadzenie do komputera', 'description': 'Podstawy obsługi komputera.'},
-    {'id': 2, 'title': 'Bezpieczeństwo w internecie', 'description': 'Jak dbać o bezpieczeństwo w sieci.'},
-    {'id': 3, 'title': 'Zakupy online', 'description': 'Jak robić zakupy przez internet.'},
-]
+    @app.route('/lesson/<int:lesson_id>')
+    def lesson(lesson_id):
+        """Strona pojedynczej lekcji"""
+        lesson = Lesson.get_lesson_by_id(lesson_id)  
+        if lesson:
+            return render_template('lesson.html', lesson=lesson)
+        else:
+            flash('Lekcja nie została znaleziona!', 'error')
+            return redirect(url_for('index'))
 
-@routes.route('/')
-def index():
-    """Strona główna - lista lekcji"""
-    return render_template('index.html', lessons=lessons)
-
-@routes.route('/lesson/<int:lesson_id>')
-def lesson(lesson_id):
-    """Strona pojedynczej lekcji"""
-    lesson = next((lesson for lesson in lessons if lesson['id'] == lesson_id), None)
-    if lesson:
-        return render_template('lesson.html', lesson=lesson)
-    else:
-        flash('Lekcja nie została znaleziona!', 'error')
-        return redirect(url_for('routes.index'))
-
-@routes.route('/contact', methods=['GET', 'POST'])
-def contact():
-    """Formularz kontaktowy dla seniorów"""
-    if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        message = request.form.get('message')
-        # Procesowanie wiadomości
-        flash('Dziękujemy za wiadomość! Skontaktujemy się z Tobą wkrótce.', 'success')
-        return redirect(url_for('routes.contact'))
-    return render_template('contact.html')
+    @app.route('/contact', methods=['GET', 'POST'])
+    def contact():
+        """Formularz kontaktowy dla seniorów"""
+        if request.method == 'POST':
+            name = request.form.get('name')
+            email = request.form.get('email')
+            message = request.form.get('message')
+            flash('Dziękujemy za wiadomość! Skontaktujemy się z Tobą wkrótce.', 'success')
+            return redirect(url_for('contact'))
+        return render_template('contact.html')
