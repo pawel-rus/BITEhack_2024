@@ -18,7 +18,9 @@
 
         {% block styles %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='../static/style.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='../static/style_swipper.css') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='badge_shrink.png') }}">
         {% endblock %}
         
 
@@ -82,7 +84,7 @@
             </div>
         </div>-->
 
-
+        {% block content -%}
             <button id="chat-toggle-button">💬</button>
 
             <div id="chat-bubble">
@@ -99,7 +101,50 @@
                 </form>
             </div>
 
-        {% block content -%}
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    var chatHistory = [];
+
+                    $('#chat-toggle-button').on('click', function() {
+                        var chatBubble = $('#chat-bubble');
+                        if (chatBubble.css('visibility') === 'hidden') {
+                            chatBubble.css('visibility', 'visible');
+                        } else {
+                            chatBubble.css('visibility', 'hidden');
+                        }
+                    });
+
+                    $('#chat-form').on('submit', function(event) {
+                        event.preventDefault();
+                        var prompt = $('#prompt').val();
+                        $.ajax({
+                            url: '/ask_ai',
+                            method: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({ prompt: prompt }),
+                            success: function(response) {
+                                chatHistory.push({ prompt: prompt, response: response.result });
+                                updateChatHistory();
+                                $('#prompt').val('');
+                            },
+                            error: function(xhr, status, error) {
+                                $('#response').html('<p>An error occurred: ' + xhr.responseJSON.error + '</p>');
+                            }
+                        });
+                    });
+
+                    function updateChatHistory() {
+                        var chatHistoryDiv = $('#chat-history');
+                        chatHistoryDiv.empty();
+                        chatHistory.forEach(function(entry) {
+                            chatHistoryDiv.append('<p><strong>You:</strong> ' + entry.prompt + '</p>');
+                            chatHistoryDiv.append('<p><strong>Bot:</strong> ' + entry.response + '</p>');
+                        });
+                        $('#chat-bubble-body').scrollTop($('#chat-bubble-body')[0].scrollHeight);
+                    }
+                });
+            </script>
         {%- endblock content %}
 
     </body>
