@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request, redirect, url_for, flash
-from models import Lesson  
+from models import Lesson, Tutorial
 
 def init_routes(app):
     @app.route('/lessons', methods=['GET'])
@@ -12,10 +12,17 @@ def init_routes(app):
         return jsonify(lessons_data), 200
         #return render_template('index.html', lessons=lessons)
 
-    @app.route('/lesson/<int:lesson_id>')
-    def lesson(lesson_id):
+    @app.route('/lesson/', methods=['GET'])
+    def lesson():
         """Strona pojedynczej lekcji"""
+        data = request.get_json()
+        lesson_id = data.get('lesson_id')
+
+        if not lesson_id:
+            return jsonify({"error": "lesson_id is required!"}), 400
+
         lesson = Lesson.get_lesson_by_id(lesson_id)  
+        
         if lesson:
             lesson_data = {
                 "id": lesson.id,
@@ -26,14 +33,18 @@ def init_routes(app):
         else:
             return jsonify({"error": "Lekcja nie została znaleziona!"}), 404
 
-    @app.route('/contact', methods=['POST'])
-    def contact():
-        """Odbiera dane z formularza kontaktowego i potwierdza w JSON"""
-        name = request.form.get('name')
-        email = request.form.get('email')
-        message = request.form.get('message')
-        if not name or not email or not message:
-            return jsonify({"error": "Wszystkie pola są wymagane!"}), 400  # Zwracamy błąd 400, jeśli dane są niekompletne
-        
-        # Tutaj możesz przetworzyć lub zapisać dane kontaktowe
-        return jsonify({"message": "Dziękujemy za wiadomość! Skontaktujemy się z Tobą wkrótce."}), 200
+    @app.route('/tutorial/', methods=['GET'])
+    def tutorial():
+        """Strona z tutorialem danej lekcji"""
+        data = request.get_json()
+        lesson_id = data.get('lesson_id')
+
+        if not lesson_id:
+            return jsonify({"error": "lesson_id is required!"}), 400
+
+        tutorial = Tutorial.get_tutorial_by_lesson_id(lesson_id)
+
+        if tutorial:
+            return jsonify(tutorial.steps), 200  
+        else:
+            return jsonify({"error": "Tutorial nie został znaleziony dla tej lekcji!"}), 404
