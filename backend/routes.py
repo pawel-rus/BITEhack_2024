@@ -13,7 +13,7 @@ import os
 
 api_key = os.getenv('LLM_API_KEY')
 
-llm = Groq(model="llama3-8b-8192", api_key=api_key)
+llm = Groq(model="llama-3.1-8b-instant", api_key=api_key)
 
 def init_routes(app):
     @app.route('/')
@@ -37,7 +37,7 @@ def init_routes(app):
             
             chat_engine = index.as_chat_engine(chat_mode="condense_question", llm=llm, verbose=True)
 
-            response_node = chat_engine.chat(prompt)  # chat here
+            response_node = chat_engine.chat(prompt)
             print({'result':  response_node.response})
             return jsonify({'result':  response_node.response})
         except Exception as e:

@@ -8,141 +8,199 @@ def create_llama_index():
         
         nodes = [
             TextNode(
-                text="Kosiarka spalinowa",
+                text="Nie mogę zalogować się do bankowości internetowej.",
                 metadata={
-                    "marka": "Stiga",
-                    "cena": 1200,
-                    "stan magazynowy": 15,
-                    "kategoria": "Narzędzia ogrodnicze"
+                    "kategoria": "Bankowość online",
+                    "rozwiązanie": "Sprawdź poprawność loginu i hasła, użyj opcji przypomnienia hasła, lub skontaktuj się z bankiem.",
+                    "gdzie mogę udać się po pomoc": "Obsługa klienta banku, rodzina, znajomi, infolinia banku.",
+                    "czy można taki problem rozwiązać przez telefon": "Tak, z pomocą infolinii banku.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Średnie",
+                    "prawdopodobieństwo scamu": "Średnie",
+                    "gdzie mogę zweryfikować": "Oficjalna strona banku, infolinia banku."
                 }
             ),
             TextNode(
-                text="Podkaszarka elektryczna",
+                text="Otrzymałem podejrzany e-mail od 'banku' proszący o podanie danych logowania.",
                 metadata={
-                    "marka": "Bosch",
-                    "cena": 300,
-                    "stan magazynowy": 25,
-                    "kategoria": "Narzędzia ogrodnicze"
+                    "kategoria": "Phishing",
+                    "rozwiązanie": "Nie klikaj w żadne linki i nie podawaj danych. Zgłoś wiadomość do banku.",
+                    "gdzie mogę udać się po pomoc": "Infolinia banku, specjalista IT, rodzina.",
+                    "czy można taki problem rozwiązać przez telefon": "Tak, kontaktując się z infolinią banku.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Bardzo wysokie",
+                    "prawdopodobieństwo scamu": "Bardzo wysokie",
+                    "gdzie mogę zweryfikować": "Oficjalna strona banku, infolinia banku."
                 }
             ),
             TextNode(
-                text="Sekator do gałęzi",
+                text="Nie wiem, jak zainstalować aplikację na smartfonie.",
                 metadata={
-                    "marka": "Fiskars",
-                    "cena": 70,
-                    "stan magazynowy": 40,
-                    "kategoria": "Narzędzia ogrodnicze"
+                    "kategoria": "Użycie smartfona",
+                    "rozwiązanie": "Przejdź do sklepu z aplikacjami (Google Play lub App Store), wyszukaj aplikację i kliknij 'Zainstaluj'.",
+                    "gdzie mogę udać się po pomoc": "Rodzina, znajomi, punkt obsługi klienta operatora telefonu.",
+                    "czy można taki problem rozwiązać przez telefon": "Tak, z pomocą kogoś, kto zna obsługę smartfona.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Niskie",
+                    "prawdopodobieństwo scamu": "Niskie",
+                    "gdzie mogę zweryfikować": "Instrukcja obsługi telefonu, autoryzowane punkty obsługi."
                 }
             ),
             TextNode(
-                text="Ręczny opryskiwacz",
+                text="Nie umiem ustawić wideorozmowy na smartfonie.",
                 metadata={
-                    "marka": "Gardena",
-                    "cena": 45,
-                    "stan magazynowy": 50,
-                    "kategoria": "Narzędzia ogrodnicze"
+                    "kategoria": "Komunikacja online",
+                    "rozwiązanie": "Zainstaluj aplikację do wideorozmów (np. Skype, WhatsApp), zaloguj się i wybierz rozmówcę, klikając ikonę kamery.",
+                    "gdzie mogę udać się po pomoc": "Rodzina, znajomi, lokalne centrum seniora.",
+                    "czy można taki problem rozwiązać przez telefon": "Tak, ale tylko częściowo.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Niskie",
+                    "prawdopodobieństwo scamu": "Niskie",
+                    "gdzie mogę zweryfikować": "Instrukcje online, lokalne centrum pomocy technologicznej."
                 }
             ),
             TextNode(
-                text="Grabie metalowe",
+                text="Nie wiem, jak połączyć się z Wi-Fi w domu.",
                 metadata={
-                    "marka": "Wolf-Garten",
-                    "cena": 30,
-                    "stan magazynowy": 35,
-                    "kategoria": "Narzędzia ogrodnicze"
+                    "kategoria": "Łączność internetowa",
+                    "rozwiązanie": "Otwórz ustawienia Wi-Fi na urządzeniu, wybierz swoją sieć i wpisz hasło.",
+                    "gdzie mogę udać się po pomoc": "Rodzina, dostawca internetu, lokalny serwis IT.",
+                    "czy można taki problem rozwiązać przez telefon": "Tak, jeśli ktoś poprowadzi Cię krok po kroku.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Niskie",
+                    "prawdopodobieństwo scamu": "Niskie",
+                    "gdzie mogę zweryfikować": "Instrukcja routera, dostawca internetu."
                 }
             ),
             TextNode(
-                text="Pistolet do kleju",
+                text="Nie mogę otworzyć plików PDF na komputerze.",
                 metadata={
-                    "marka": "Yato",
-                    "cena": 70,
-                    "stan magazynowy": 22,
-                    "kategoria": "Narzędzia wykończeniowe"
+                    "kategoria": "Obsługa plików",
+                    "rozwiązanie": "Zainstaluj program do odczytu PDF, np. Adobe Reader lub inny darmowy czytnik.",
+                    "gdzie mogę udać się po pomoc": "Rodzina, znajomi, lokalny serwis IT.",
+                    "czy można taki problem rozwiązać przez telefon": "Tak, z pomocą kogoś bardziej zaawansowanego technologicznie.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Niskie",
+                    "prawdopodobieństwo scamu": "Niskie",
+                    "gdzie mogę zweryfikować": "Oficjalna strona producenta oprogramowania PDF."
                 }
             ),
             TextNode(
-                text="Taśma malarska",
+                text="Komputer działa wolno i zawiesza się.",
                 metadata={
-                    "marka": "Tesa",
-                    "cena": 10,
-                    "stan magazynowy": 100,
-                    "kategoria": "Narzędzia wykończeniowe"
+                    "kategoria": "Wydajność komputera",
+                    "rozwiązanie": "Uruchom program antywirusowy, zamknij niepotrzebne aplikacje, zaktualizuj system operacyjny.",
+                    "gdzie mogę udać się po pomoc": "Lokalny serwis komputerowy, rodzina, znajomi.",
+                    "czy można taki problem rozwiązać przez telefon": "Częściowo, jeśli ktoś doradzi odpowiednie kroki.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Średnie",
+                    "prawdopodobieństwo scamu": "Średnie",
+                    "gdzie mogę zweryfikować": "Oficjalne strony producentów oprogramowania."
                 }
             ),
             TextNode(
-                text="Szpachla stalowa",
+                text="Nie mogę znaleźć zdjęć na smartfonie.",
                 metadata={
-                    "marka": "Condor",
-                    "cena": 20,
-                    "stan magazynowy": 55,
-                    "kategoria": "Narzędzia wykończeniowe"
+                    "kategoria": "Zarządzanie plikami",
+                    "rozwiązanie": "Otwórz aplikację Galeria lub Zdjęcia i przejrzyj foldery.",
+                    "gdzie mogę udać się po pomoc": "Rodzina, znajomi, lokalne centrum pomocy technologicznej.",
+                    "czy można taki problem rozwiązać przez telefon": "Tak, z pomocą kogoś, kto zna system smartfona.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Niskie",
+                    "prawdopodobieństwo scamu": "Niskie",
+                    "gdzie mogę zweryfikować": "Instrukcja telefonu, obsługa klienta producenta."
                 }
             ),
             TextNode(
-                text="Wałek malarski",
+                text="Dostałem telefon od 'Microsoftu', który twierdzi, że mam wirusa na komputerze.",
                 metadata={
-                    "marka": "Hamilton",
-                    "cena": 35,
-                    "stan magazynowy": 30,
-                    "kategoria": "Narzędzia wykończeniowe"
+                    "kategoria": "Oszustwa telefoniczne",
+                    "rozwiązanie": "Natychmiast zakończ rozmowę i nie podawaj żadnych danych.",
+                    "gdzie mogę udać się po pomoc": "Rodzina, znajomi, lokalne centrum pomocy IT.",
+                    "czy można taki problem rozwiązać przez telefon": "Tak, informując odpowiednie służby o oszustwie.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Bardzo wysokie",
+                    "prawdopodobieństwo scamu": "Bardzo wysokie",
+                    "gdzie mogę zweryfikować": "Oficjalna strona Microsoftu, lokalne władze."
                 }
             ),
             TextNode(
-                text="Paca z zębami",
+                text="Nie wiem, jak ustawić alarm na telefonie.",
                 metadata={
-                    "marka": "Hardex",
-                    "cena": 15,
-                    "stan magazynowy": 40,
-                    "kategoria": "Narzędzia wykończeniowe"
+                    "kategoria": "Funkcje smartfona",
+                    "rozwiązanie": "Otwórz aplikację Zegar, wybierz opcję Alarm i ustaw godzinę.",
+                    "gdzie mogę udać się po pomoc": "Rodzina, znajomi, lokalne centrum pomocy technologicznej.",
+                    "czy można taki problem rozwiązać przez telefon": "Tak, z pomocą kogoś, kto zna obsługę smartfona.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Niskie",
+                    "prawdopodobieństwo scamu": "Niskie",
+                    "gdzie mogę zweryfikować": "Instrukcja telefonu."
                 }
             ),
             TextNode(
-                text="Wkrętarka akumulatorowa",
+                text="Nie mogę wysłać wiadomości e-mail na komputerze.",
                 metadata={
-                    "marka": "Makita",
-                    "cena": 500,
-                    "stan magazynowy": 20,
-                    "kategoria": "Narzędzia warsztatowe"
+                    "kategoria": "Komunikacja internetowa",
+                    "rozwiązanie": "Sprawdź ustawienia poczty, upewnij się, że masz połączenie internetowe, zweryfikuj adres e-mail.",
+                    "gdzie mogę udać się po pomoc": "Rodzina, znajomi, punkt obsługi internetu, infolinia dostawcy usług.",
+                    "czy można taki problem rozwiązać przez telefon": "Tak, z pomocą specjalisty IT.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Niskie",
+                    "prawdopodobieństwo scamu": "Niskie",
+                    "gdzie mogę zweryfikować": "Oficjalna strona usługi pocztowej."
                 }
             ),
             TextNode(
-                text="Szlifierka kątowa",
+                text="Nie rozumiem, jak korzystać z portalu społecznościowego.",
                 metadata={
-                    "marka": "Bosch",
-                    "cena": 250,
-                    "stan magazynowy": 18,
-                    "kategoria": "Narzędzia warsztatowe"
+                    "kategoria": "Media społecznościowe",
+                    "rozwiązanie": "Zaloguj się na stronę, obejrzyj tutorial wprowadzający, zaprzyjaźnij się z podstawowymi funkcjami.",
+                    "gdzie mogę udać się po pomoc": "Młodsi krewni, lokalne centrum komputerowe, kursy dla seniorów.",
+                    "czy można taki problem rozwiązać przez telefon": "Częściowo, poprzez prowadzenie przez telefon.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Średnie",
+                    "prawdopodobieństwo scamu": "Średnie",
+                    "gdzie mogę zweryfikować": "Oficjalna strona portalu społecznościowego, pomoc techniczna."
                 }
             ),
             TextNode(
-                text="Młotek ślusarski",
+                text="Mam problemy z drukowaniem dokumentów.",
                 metadata={
-                    "marka": "Stanley",
-                    "cena": 40,
-                    "stan magazynowy": 45,
-                    "kategoria": "Narzędzia warsztatowe"
+                    "kategoria": "Sprzęt biurowy",
+                    "rozwiązanie": "Sprawdź podłączenie drukarki, upewnij się, że jest włączona, zainstaluj sterowniki.",
+                    "gdzie mogę udać się po pomoc": "Serwis komputerowy, sklep z elektroniką, rodzina.",
+                    "czy można taki problem rozwiązać przez telefon": "Częściowo, z pomocą specjalisty.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Niskie",
+                    "prawdopodobieństwo scamu": "Niskie",
+                    "gdzie mogę zweryfikować": "Strona producenta drukarki, pomoc techniczna."
                 }
             ),
             TextNode(
-                text="Klucz nastawny",
+                text="Ktoś dzwoni i prosi o dostęp do mojego komputera zdalnego.",
                 metadata={
-                    "marka": "Neo Tools",
-                    "cena": 30,
-                    "stan magazynowy": 60,
-                    "kategoria": "Narzędzia warsztatowe"
+                    "kategoria": "Bezpieczeństwo internetowe",
+                    "rozwiązanie": "Nie zgadzaj się na żadne zdalne połączenia, przerwij rozmowę, zgłoś próbę oszustwa.",
+                    "gdzie mogę udać się po pomoc": "Policja, rodzina, lokalne centrum bezpieczeństwa cybernetycznego.",
+                    "czy można taki problem rozwiązać przez telefon": "Tak, informując odpowiednie służby.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Bardzo wysokie",
+                    "prawdopodobieństwo scamu": "Bardzo wysokie",
+                    "gdzie mogę zweryfikować": "Oficjalne strony antywirusowe, policja."
                 }
             ),
             TextNode(
-                text="Imadło warsztatowe",
+                text="Nie mogę zaktualizować systemu operacyjnego.",
                 metadata={
-                    "marka": "Topex",
-                    "cena": 150,
-                    "stan magazynowy": 10,
-                    "kategoria": "Narzędzia warsztatowe"
+                    "kategoria": "Aktualizacje oprogramowania",
+                    "rozwiązanie": "Sprawdź połączenie internetowe, zwolnij miejsce na dysku, uruchom aktualizację ręcznie.",
+                    "gdzie mogę udać się po pomoc": "Lokalny serwis komputerowy, rodzina, forum internetowe.",
+                    "czy można taki problem rozwiązać przez telefon": "Częściowo, z prowadzeniem krok po kroku.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Niskie",
+                    "prawdopodobieństwo scamu": "Niskie",
+                    "gdzie mogę zweryfikować": "Oficjalna strona producenta systemu."
+                }
+            ),
+            TextNode(
+                text="Nie wiem, jak zrobić zrzut ekranu.",
+                metadata={
+                    "kategoria": "Podstawowe umiejętności komputerowe",
+                    "rozwiązanie": "Naciśnij klawisz 'Print Screen' lub kombinację klawiszy Windows + Print Screen, aby zrobić zrzut ekranu.",
+                    "gdzie mogę udać się po pomoc": "Rodzina, kursy komputerowe, lokalne centrum dla seniorów.",
+                    "czy można taki problem rozwiązać przez telefon": "Tak, poprzez dokładne instrukcje.",
+                    "prawdopodobieństwo, że ktoś chce mnie oszukać": "Niskie",
+                    "prawdopodobieństwo scamu": "Niskie",
+                    "gdzie mogę zweryfikować": "Oficjalna pomoc systemu operacyjnego."
                 }
             )
         ]
+
         
         embed_model = HuggingFaceEmbedding( model_name="BAAI/bge-small-en-v1.5")
         index=VectorStoreIndex(nodes, embed_model=embed_model)
