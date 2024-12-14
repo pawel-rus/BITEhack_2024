@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikacja Edukacyjna dla Seniorów</title>
+    <!-- Link do Bootstrapa -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link do własnych stylów -->
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="my-4 text-center">
+            <h1>Witaj w Aplikacji Edukacyjnej dla Seniorów</h1>
+            <nav>
+                <a href="{{ url_for('index') }}" class="btn btn-primary m-2">Strona Główna</a>
+                <a href="{{ url_for('contact') }}" class="btn btn-secondary m-2">Kontakt</a>
+            </nav>
+        </header>
+
+        <section>
+            <h2 class="mb-4">Wybierz lekcję:</h2>
+            <div class="row">
+                {% for lesson in lessons %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ lesson.title }}</h5>
+                                <p class="card-text">{{ lesson.description }}</p>
+                                <a href="{{ url_for('lesson', lesson_id=lesson.id) }}" class="btn btn-primary">Zobacz lekcję</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
