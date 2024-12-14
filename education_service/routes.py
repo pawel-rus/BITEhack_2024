@@ -2,7 +2,7 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for, f
 from models import Lesson  
 
 def init_routes(app):
-    @app.route('/lessons')
+    @app.route('/lessons', methods=['GET'])
     def index():
         """Strona główna - lista lekcji"""
         lessons = Lesson.get_all_lessons() 
