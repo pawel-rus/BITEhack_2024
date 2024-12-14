@@ -5,6 +5,7 @@ from models import db
 from routes import init_routes
 import os
 
+
 app = Flask(__name__, template_folder="../frontend/templates", static_folder='../frontend/static')
 app.config.from_object(Config)
 CORS(app)
