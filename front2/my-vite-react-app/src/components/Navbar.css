@@ -1,37 +1,88 @@
-.navbar {
-    background-color: #f9f9fc !important;
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Navbar */
+.navbar {
+    background-color: #f9f9fc !important;
+    position: fixed; /* Przypięcie navbaru na górze */
+    top: 0;
+    left: 0;
+    width: 100%; /* Pełna szerokość */
+    z-index: 1000; /* Na wierzchu innych elementów */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lekki cień */
+    padding: 10px 20px;
+}
+
+/* Marka */
+.navbar-brand {
+    font-weight: 500;
+    color: #333399;
+    text-decoration: none;
+}
+
+/* Nawigacja */
 .navbar-nav {
     display: flex;
-    width: 75%;
-    gap: 5px;
+    flex-wrap: wrap; /* Umożliwia zawijanie linków na mniejszych ekranach */
+    gap: 10px;
+    font-size: 18px;
 }
 
 .nav-item {
-    flex: 1;
     text-align: center;
 }
 
-.navbar-brand {
-    font-weight: 500;
-    transform: scale(1.15);
-    transform-origin: left center;
-}
-
 .nav-link {
-    transform: scale(1.1);
-    transform-origin: left center;
+    color: black;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
 }
 
-.navbar-nav {
-    padding-left: 50px;
-}
-
-.navbar-nav .nav-item {
-    margin: 0 35px;
+.nav-link:hover {
+    color: #007bff;
 }
 
 .nav-link.active {
+    color: #333399;
     border-bottom: 2px solid #007bff;
+}
+
+/* Ikony społecznościowe */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-nav {
+        justify-content: flex-start;
+    }
 }

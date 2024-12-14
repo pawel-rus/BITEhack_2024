@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ChatBubble from './components/ChatBubble';
 import './styles.css';
+
 function Home() {
     return <div>Home page</div>
 }
