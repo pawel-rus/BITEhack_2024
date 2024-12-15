@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ChatBubble from './components/ChatBubble';
+import AssistantContent from './components/AssistantContent';
 import './styles.css';
 
 function Home() {
@@ -10,7 +11,7 @@ function Courses() {
     return <div>Courses page</div>
 }
 function Assistant() {
-    return <div>Assistant page</div>
+    return <AssistantContent />;
 }
 
 function App() {

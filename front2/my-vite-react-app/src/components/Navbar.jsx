@@ -53,11 +53,6 @@ function Navbar() {
                     </ul>
                 </div>
 
-                {/* Ikony mediów społecznościowych */}
-                <div className="social-icons">
-                    <img className="fb_img_class" id="facebook" src="/src/assets/fb_img.png" alt="Facebook" />
-                    <img className="ig_img_class" id="instagram" src="/src/assets/ig_img.png" alt="Instagram" />
-                </div>
             </div>
         </nav>
     );
