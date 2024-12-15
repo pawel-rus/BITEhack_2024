@@ -44,10 +44,10 @@ function Navbar() {
                         </li>
                         <li className="nav-item">
                             <Link
-                                className={`nav-link ${location.pathname === '/assistant' ? 'active' : ''}`}
-                                to="/assistant"
+                                className={`nav-link ${location.pathname === '/helpdesk' ? 'active' : ''}`}
+                                to="/helpdesk"
                             >
-                                Assistant
+                                HelpDesk
                             </Link>
                         </li>
                     </ul>

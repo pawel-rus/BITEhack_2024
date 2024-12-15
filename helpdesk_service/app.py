@@ -1,42 +1,23 @@
-from flask import Flask, request, jsonify
+from flask import Flask
 from flask_cors import CORS
-from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
+from config import Config
+from models import db
+from routes import init_routes
+import os
 
-app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins during development
 
-# Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:GWnQGFuMpUnZxayhsYrtEdGoOnXUxCpd@junction.proxy.rlwy.net:37394/railway'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app = Flask(__name__, template_folder="../frontend/templates", static_folder='../frontend/static')
+app.config.from_object(Config)
+CORS(app)
 
-db = SQLAlchemy(app)
+db.init_app(app)
 
-class Entry(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(255), nullable=False)
-    content = db.Column(db.Text, nullable=False)
-
-# Removed create_all as we are now relying on migrations
 with app.app_context():
-   db.create_all()
+    db.create_all(bind_key='db')
 
-@app.route('/add_entry', methods=['POST'])
-def add_entry():
-    data = request.get_json()
-    username = data.get('username')
-    content = data.get('content')
+init_routes(app)
 
-    print(data)
-
-    if not username or not content:
-        return jsonify({'error': 'Username and content are required'}), 400
-
-    entry = Entry(username=username, content=content)
-    db.session.add(entry)
-    db.session.commit()
-
-    return jsonify({'message': 'Entry added successfully'}), 201
+port = int(os.environ.get('PORT', 5003))
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5003)
+    app.run(host='0.0.0.0',port=port, debug=True)
