@@ -1,0 +1,25 @@
+.home1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.home1 img {
+    max-width: 60%;
+    height: auto; /* Automatyczne dostosowanie wysokości */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Dla mniejszych ekranów */
+@media (max-width: 768px) {
+    .home1 img {
+        max-width: 90%; /* Zwiększenie szerokości dla mniejszych ekranów */
+    }
+}
+
+@media (max-width: 480px) {
+    .home1 img {
+        max-width: 100%; /* Obraz zajmuje całą szerokość ekranu */
+        border-radius: 5px; /* Zmniejszenie zaokrąglenia */
+    }
+}

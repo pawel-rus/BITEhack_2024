@@ -50,13 +50,15 @@ function Navbar() {
                                 Assistant
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link
+                                className={`nav-link ${location.pathname === "/discussion" ? 'active' : ''}`}
+                                to="/discussion"
+                            >
+                                Discussion
+                            </Link>
+                        </li>
                     </ul>
-                </div>
-
-                {/* Ikony mediów społecznościowych */}
-                <div className="social-icons">
-                    <img className="fb_img_class" id="facebook" src="/src/assets/fb_img.png" alt="Facebook" />
-                    <img className="ig_img_class" id="instagram" src="/src/assets/ig_img.png" alt="Instagram" />
                 </div>
             </div>
         </nav>

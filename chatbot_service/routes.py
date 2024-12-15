@@ -78,5 +78,6 @@ def init_routes(app):
     @app.route('/assistant')
     def assistant():
         return render_template('assistant.html')
+
         
         

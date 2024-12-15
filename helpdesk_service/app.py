@@ -7,53 +7,66 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 
+
+# MODELE
+class Thread(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    user_id = db.Column(db.String(50), nullable=False)
+    comments = db.relationship('Comment', backref='thread', lazy=True)
+
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    thread_id = db.Column(db.Integer, db.ForeignKey('thread.id'), nullable=False)
+    user_id = db.Column(db.String(50), nullable=False)
+    text = db.Column(db.Text, nullable=False)
+
+
+# ENDPOINTY
 @app.route('/')
 def index():
     return render_template('help_desk.html')
 
-@app.route('/login', methods=['POST'])
-def login():
-    user_id = request.json.get('user_id')
-    password = request.json.get('password')
-    
-    if not user_id or not password:
-        return jsonify({'error': 'Missing user_id or password'}), 400
-    
-    # Weryfikacja poświadczeń
-    if user_id in users_db and users_db[user_id] == password:
-        token = generate_jwt(user_id, app.config['SECRET_KEY'])
-        return jsonify({'token': token})
-    else:
-        return jsonify({'error': 'Invalid credentials'}), 401
 
-@app.route('/report', methods=['POST'])
-#@token_required
-def report_problem(current_user):
-    description = request.json.get('description')
-    if not description:
-        return jsonify({'error': 'Missing description'}), 400
-    
-    problem = Problem(description=description, user_id=current_user)
-    db.session.add(problem)
-    db.session.commit()
-    return jsonify({'message': 'Problem reported successfully'})
-
-@app.route('/problems', methods=['GET'])
+@app.route('/threads', methods=['GET', 'POST'])
 @token_required
-def get_problems(current_user):
-    problems = Problem.query.all()
-    return jsonify([{'id': p.id, 'description': p.description, 'status': p.status, 'user_id': p.user_id} for p in problems])
+def threads(current_user):
+    if request.method == 'POST':
+        title = request.json.get('title')
+        if not title:
+            return jsonify({'error': 'Missing thread title'}), 400
 
-@app.route('/problems/<int:problem_id>/resolve', methods=['POST'])
+        thread = Thread(title=title, user_id=current_user)
+        db.session.add(thread)
+        db.session.commit()
+        return jsonify({'message': 'Thread created successfully'}), 201
+
+    threads = Thread.query.all()
+    return jsonify([{'id': t.id, 'title': t.title, 'user_id': t.user_id} for t in threads])
+
+
+@app.route('/threads/<int:thread_id>/comments', methods=['GET', 'POST'])
 @token_required
-def resolve_problem(current_user, problem_id):
-    problem = Problem.query.get(problem_id)
-    if not problem:
-        return jsonify({'error': 'Problem not found'}), 404
-    
-    problem.status = 'resolved'
-    db.session.commit()
-    return jsonify({'message': 'Problem resolved successfully'})
+def comments(current_user, thread_id):
+    thread = Thread.query.get(thread_id)
+    if not thread:
+        return jsonify({'error': 'Thread not found'}), 404
+
+    if request.method == 'POST':
+        text = request.json.get('text')
+        if not text:
+            return jsonify({'error': 'Missing comment text'}), 400
+
+        comment = Comment(thread_id=thread_id, user_id=current_user, text=text)
+        db.session.add(comment)
+        db.session.commit()
+        return jsonify({'message': 'Comment added successfully'}), 201
+
+    comments = Comment.query.filter_by(thread_id=thread_id).all()
+    return jsonify([{'id': c.id, 'text': c.text, 'user_id': c.user_id} for c in comments])
+
 
 if __name__ == '__main__':
+    db.create_all()
     app.run(debug=True, port=5001)
