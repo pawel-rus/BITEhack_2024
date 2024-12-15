@@ -25,11 +25,12 @@
 }
 
 #chat-bubble-header {
-    background-color: #007bff;
-    color: white;
+    background-color: #b0aeb3; /* Kolor tła nagłówka */
+    color: white; /* Kolor tekstu nagłówka */
     padding: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    text-align: center;
     cursor: pointer;
     font-size: xx-large;
 }
@@ -59,17 +60,34 @@
 }
 
 #chat-toggle-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: #767776; /* Kolor tła przycisku */
+    color: white; /* Kolor tekstu przycisku */
     border: none;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    font-size: 56px;
+    font-size: 24px;
     cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
     z-index: 1000;
-    font-size: xx-large;
+}
+
+#chat-toggle-button:hover {
+    background-color: #b0aeb3; /* Kolor tła przycisku po najechaniu */
+}
+
+.user-message {
+    background-color: #555551; /* Kolor tła dla wiadomości użytkownika */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.bot-response {
+    background-color: #f1f8e9; /* Kolor tła dla odpowiedzi bota */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }

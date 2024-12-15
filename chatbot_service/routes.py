@@ -10,8 +10,22 @@ from llama_index.llms.groq import Groq
 from llama_index.core import StorageContext
 from llama_index.core import load_index_from_storage
 import os
+import cohere
+import pathlib
+import textwrap
+
+
+import google.generativeai as genai
+
 
 api_key = os.getenv('LLM_API_KEY')
+api_key_cohere = os.getenv('COHERE_API_KEY')
+co = cohere.Client(api_key_cohere)
+GOOGLE_API_KEY=os.getenv('GOOGLE_API_KEY')
+
+genai.configure(api_key=GOOGLE_API_KEY)
+model = genai.GenerativeModel('gemini-1.5-flash')
+
 
 llm = Groq(model="llama-3.1-8b-instant", api_key=api_key)
 
@@ -36,6 +50,24 @@ def init_routes(app):
             response_node = chat_engine.chat(prompt)  # chat here
             print({'result':  response_node.response})
             return jsonify({'result':  response_node.response})
+        except Exception as e:
+            return jsonify({'error':  f"An error occurred: {e}"})
+        
+    @app.route('/ask_gemini', methods=['POST'])
+    def ask_gemini():
+        try:
+            
+            data = request.get_json()
+            print(data.get('prompt'))
+            document = data.get('prompt')
+
+            prompt = f"Piszesz ze starszą osobą bądź dla niej miły i wyrozumiały. Odpowiedzi mają być zwięzłe. Oto wiadomośc: {document}"
+
+            response = model.generate_content(prompt)
+
+
+            print({'result':  response.text})
+            return jsonify({'result':  response.text})
         except Exception as e:
             return jsonify({'error':  f"An error occurred: {e}"})
         

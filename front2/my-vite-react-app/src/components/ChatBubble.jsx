@@ -1,4 +1,4 @@
-import  { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './ChatBubble.css';
 
 function ChatBubble() {
@@ -12,42 +12,42 @@ function ChatBubble() {
         setChatVisible(!isChatVisible);
     };
 
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (prompt.trim() === "") return;
         try {
-            const response = await fetch('/api/chatbot/ask_ai', {
+            const response = await fetch('/api/chatbot/ask_gemini', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ prompt: prompt }),
             });
-    
+
+            const responseText = await response.text();
+            console.log(responseText); // Dodaj ten log, aby zobaczyć odpowiedź serwera
+
             if (!response.ok) {
-                const errorData = await response.json();
+                const errorData = JSON.parse(responseText);
                 setError(errorData.error || 'An error occurred');
                 return;
             }
-    
-            const data = await response.json();
+
+            const data = JSON.parse(responseText);
             setChatHistory([...chatHistory, { prompt: prompt, response: data.result }]);
             setPrompt('');
             setError(null);
-    
+
         } catch (err) {
             setError(err.message || 'An error occurred');
         }
     };
-
 
     useEffect(() => {
         if (chatBodyRef.current) {
             chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
         }
     }, [chatHistory]);
-
 
     return (
         <>
@@ -59,11 +59,11 @@ function ChatBubble() {
                     <div id="chat-history">
                         {chatHistory.map((entry, index) => (
                             <div key={index}>
-                                <p><strong>You:</strong> {entry.prompt}</p>
-                                <p><strong>Bot:</strong> {entry.response}</p>
+                                <p className="user-message"><strong>You:</strong> {entry.prompt}</p>
+                                <p className="bot-response"><strong>Bot:</strong> {entry.response}</p>
                             </div>
                         ))}
-                        {error && <p><strong>Error:</strong> {error}</p>}
+                        {error && <p className="bot-response"><strong>Error:</strong> {error}</p>}
                     </div>
                 </div>
                 <form id="chat-form" onSubmit={handleSubmit}>
