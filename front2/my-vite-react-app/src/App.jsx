@@ -6,10 +6,6 @@ import Courses from './components/Courses';
 import Home from './components/Home';
 import './styles.css';
 
-
-function Courses() {
-    return <div>Courses page</div>
-}
 function Assistant() {
     return <div>Assistant page</div>
 }
