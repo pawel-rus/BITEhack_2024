@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './Courses.css';
+//import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 function Courses() {
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [tutorial, setTutorial] = useState(null); // Stan do przechowywania danych tutorialu
-    const [selectedLessonId, setSelectedLessonId] = useState(null); // ID wybranej lekcji
+    const [tutorial, setTutorial] = useState(null);
+    const [selectedLessonId, setSelectedLessonId] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+    const [currentStep, setCurrentStep] = useState(1);
 
     const fetchCourses = async () => {
         setLoading(true);
@@ -34,7 +37,6 @@ function Courses() {
         }
     };
 
-    // Funkcja do pobierania tutorialu (używając POST)
     const fetchTutorial = async (lessonId) => {
         try {
             const response = await fetch('api/education/tutorial/', {
@@ -42,7 +44,7 @@ function Courses() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ lesson_id: lessonId }), // Wysyłamy lesson_id jako JSON
+                body: JSON.stringify({ lesson_id: lessonId }),
             });
 
             if (!response.ok) {
@@ -50,19 +52,33 @@ function Courses() {
             }
 
             const data = await response.json();
-            setTutorial(data);  // Przypisujemy dane tutorialu do stanu
+             // Zresetuj currentStep za każdym razem przy pobieraniu nowego tutorialu
+           setCurrentStep(1);
+            setTutorial(data);
+            setShowModal(true);
         } catch (err) {
             setError(err.message);
         }
     };
 
-    // Funkcja do obsługi kliknięcia w przycisk "Zobacz lekcję"
-    const handleViewLesson = (lessonId) => {
-        setSelectedLessonId(lessonId);  // Ustawiamy ID lekcji
-        setTutorial(null);               // Resetujemy stan tutorialu przy zmianie lekcji
-        fetchTutorial(lessonId);         // Pobieramy tutorial dla tej lekcji
+  const handleViewLesson = (lessonId) => {
+        setSelectedLessonId(lessonId);
+        setTutorial(null);
+        fetchTutorial(lessonId);
+  };
+
+   const closeModal = () => {
+        setShowModal(false);
+        setTutorial(null);
+        setSelectedLessonId(null);
+        setCurrentStep(1); // Zresetuj currentStep przy zamknięciu modala
     };
 
+    const handleNextStep = () => {
+      if (tutorial && currentStep < Object.keys(tutorial).length) {
+            setCurrentStep(prevStep => prevStep + 1);
+      }
+    };
     useEffect(() => {
         fetchCourses();
     }, []);
@@ -76,56 +92,58 @@ function Courses() {
     }
 
     return (
-        <div>
-            {/* Wyświetlamy listę kursów */}
-            <section>
-                <h2 className="mb-4">Wybierz lekcję:</h2>
-                <div className="row">
-                    {courses.map(course => (
-                        <div key={course.id} className="col-md-4 mb-3">
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title">{course.title}</h5>
-                                    <p className="card-text">{course.description}</p>
-                                    <button
-                                        onClick={() => handleViewLesson(course.id)}
-                                        className="btn btn-primary"
-                                    >
-                                        Zobacz lekcję
-                                    </button>
+         <div className="container mt-5 p-4 border rounded shadow-sm bg-white">
+            <h2 className="mb-4 text-primary">Wybierz lekcję:</h2>
+            <div className="row">
+                {courses.map(course => (
+                    <div key={course.id} className="col-md-4 mb-3">
+                        <div className="card">
+                            <div className="card-body">
+                                <h5 className="card-title">{course.title}</h5>
+                                <p className="card-text">{course.description}</p>
+                                <button
+                                    onClick={() => handleViewLesson(course.id)}
+                                    className="btn btn-primary"
+                                >
+                                    Zobacz lekcję
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+           <div className={`modal fade ${showModal ? 'show d-block' : ''}`} id="tutorialModal" tabIndex="-1" role="dialog" style={{ display: showModal ? 'block' : 'none' }}>
+               <div className="modal-dialog modal-dialog-centered">
+                   <div className="modal-content">
+                       <div className="modal-header">
+                         <h5 className="modal-title">Tutorial for Lesson: {selectedLessonId}</h5>
+                         <button type="button" className="btn-close" data-bs-dismiss="modal" onClick={closeModal} aria-label="Close"></button>
+                       </div>
+                     <div className="modal-body">
+                           {tutorial && tutorial[currentStep] && (
+                            <div style={{ marginBottom: '15px', fontSize: '1.2rem' }}>
+                                <div style={{ fontWeight: 'bold', color: '#007bff' }}>
+                                    Krok {currentStep}:
                                 </div>
+                                <div style={{ fontSize: '1.1rem' }}>{tutorial[currentStep]}</div>
                             </div>
+                        )}
+                         {tutorial && !tutorial[currentStep] && (
+                            <p style={{ fontStyle: 'italic', color: '#888' }}>Tutorial zakończony.</p>
+                        )}
                         </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Wyświetlamy tutorial dla wybranej lekcji */}
-            {selectedLessonId && tutorial && (
-    <section>
-        <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '20px' }}>
-            Tutorial dla lekcji: {selectedLessonId}
-        </h2>
-        <div style={{ padding: '20px', backgroundColor: '#f4f4f4', borderRadius: '8px' }}>
-            {tutorial ? (
-                <div>
-                    {Object.entries(tutorial).map(([stepNumber, step], index) => (
-                        <div key={index} style={{ marginBottom: '15px', fontSize: '1.2rem' }}>
-                            <div style={{ fontWeight: 'bold', color: '#007bff' }}>
-                                Krok {stepNumber}:
-                            </div>
-                            <div style={{ fontSize: '1.1rem' }}>{step}</div>
+                        <div className="modal-footer">
+                                  {tutorial && currentStep < Object.keys(tutorial).length ? (
+                               <button type="button" className="btn btn-primary" onClick={handleNextStep}>
+                                   Następny krok
+                                </button>
+                                   ) : null}
+                           <button type="button" className="btn btn-secondary" onClick={closeModal} data-bs-dismiss="modal">Close</button>
                         </div>
-                    ))}
+                    </div>
                 </div>
-            ) : (
-                <p style={{ fontStyle: 'italic', color: '#888' }}>Brak kroków w tym tutorialu.</p>
-            )}
-        </div>
-    </section>
-)}
-
-
+            </div>
+              {showModal && <div className="modal-backdrop fade show"></div>}
         </div>
     );
 }

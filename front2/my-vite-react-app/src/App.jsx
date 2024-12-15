@@ -5,6 +5,8 @@ import Courses from './components/Courses';
 
 import Home from './components/Home';
 import './styles.css';
+import Home1 from './components/Home1';
+
 
 function Assistant() {
     return <div>Assistant page</div>
@@ -18,7 +20,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/courses" element={<Courses />} />
-                <Route path="/assistant" element={<Assistant />} />
+                <Route path="/assistant" element={<Home1 />} />
             </Routes>
         </Router>
     );

@@ -5,36 +5,39 @@ function Home() {
     return (
         <div className="home">
             <header className="home-header">
-                <h1>Witamy na naszej stronie!</h1>
-                <p>Oferujemy szeroki wybór kursów online, które pomogą Ci zdobyć nowe umiejętności.</p>
-                <Link to="/courses" className="btn btn-primary">Zobacz kursy</Link>
+                <h1>Witamy w Centrum Edukacyjnym!</h1>
+                <p>Prosta nauka dla każdego, w każdym wieku.</p>
             </header>
-            <section className="courses-list">
-                <h2>Nasze kursy</h2>
-                <ul>
-                    <li>Kurs 1: Wprowadzenie do programowania</li>
-                    <li>Kurs 2: Zaawansowane techniki programowania</li>
-                    <li>Kurs 3: Tworzenie aplikacji webowych</li>
-                </ul>
+
+            <section className="instructions">
+                <h2><span role="img" aria-label="instructions">📖</span> Jak korzystać?</h2>
+                <div className="instruction-block">
+                    <h3><span role="img" aria-label="chatbot">🤖</span> Chatbot</h3>
+                    <p>Nasz chatbot jest tutaj, by Ci pomóc:</p>
+                    <div>
+                        <li>Kliknij ikonę 💬 w prawym dolnym rogu.</li>
+                        <li>Wpisz swoje pytanie i naciśnij "Wyślij".</li>
+                        <li>Możesz również użyć mikrofonu, by mówić do chatbota.</li>
+                    </div>
+                </div>
+                <div className="instruction-block">
+                    <h3><span role="img" aria-label="courses">📚</span> Kursy</h3>
+                    <p>Ucz się z naszych kursów krok po kroku:</p>
+                    <div>
+                        <li>Przejdź do sekcji "Kursy".</li>
+                        <li>Wybierz kurs i rozpocznij naukę.</li>
+                    </div>
+                </div>
             </section>
+            
             <section className="about-us">
-                <h2>O nas</h2>
-                <p>Jesteśmy zespołem doświadczonych programistów, którzy chcą dzielić się swoją wiedzą z innymi.</p>
+                <h2><span role="img" aria-label="about us">👨‍🏫</span> O nas</h2>
+                <p>Jesteśmy zespołem, który pasjonuje się edukacją i nowymi technologiami.</p>
             </section>
-            <section className="testimonials">
-                <h2>Opinie użytkowników</h2>
-                <blockquote>
-                    <p>"Świetne kursy! Bardzo mi pomogły w nauce programowania."</p>
-                    <footer>- Jan Kowalski</footer>
-                </blockquote>
-                <blockquote>
-                    <p>"Polecam wszystkim, którzy chcą się rozwijać w IT."</p>
-                    <footer>- Anna Nowak</footer>
-                </blockquote>
-            </section>
+
             <footer className="home-footer">
                 <p>&copy; 2024 Nasza Firma. Wszelkie prawa zastrzeżone.</p>
-                <Link to="/privacy-policy">Polityka prywatności</Link>
+                <Link to="/privacy-policy">Polityka prywatności</Link> | 
                 <Link to="/contact">Kontakt</Link>
             </footer>
         </div>

@@ -50,3 +50,4 @@ def init_routes(app):
             return jsonify(tutorial.steps), 200  
         else:
             return jsonify({"error": "Tutorial nie został znaleziony dla tej lekcji!"}), 404
+        

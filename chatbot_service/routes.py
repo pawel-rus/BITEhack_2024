@@ -71,12 +71,3 @@ def init_routes(app):
         except Exception as e:
             return jsonify({'error':  f"An error occurred: {e}"})
         
-    @app.route('/courses')
-    def courses():
-        return render_template('courses.html')
-        
-    @app.route('/assistant')
-    def assistant():
-        return render_template('assistant.html')
-        
-        
