@@ -95,7 +95,7 @@ Jeśli preferujesz w pełni zintegrowane środowisko, możesz użyć Docker Comp
    docker-compose up
    ```
 
-Docker Compose automatycznie uruchomi wszystkie mikroserwisy oraz frontend w zintegrowanym środowisku.
+Docker-Compose automatycznie uruchomi wszystkie mikroserwisy oraz frontend w zintegrowanym środowisku.
 
 ---
 
