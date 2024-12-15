@@ -30,7 +30,7 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 llm = Groq(model="llama-3.1-8b-instant", api_key=api_key)
 
 def init_routes(app):  
-    @app.route('/ask_ai', methods=['POST'])
+    @app.route('/ask_groq', methods=['POST'])
     def query_endpoint():
         try:
             index_dir = './final_index'

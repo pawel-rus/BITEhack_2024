@@ -1,11 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ChatBubble from './components/ChatBubble';
+import Home from './components/Home';
 import './styles.css';
 
-function Home() {
-    return <div>Home page</div>
-}
+
 function Courses() {
     return <div>Courses page</div>
 }
