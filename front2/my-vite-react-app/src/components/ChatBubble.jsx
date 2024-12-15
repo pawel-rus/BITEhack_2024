@@ -17,27 +17,27 @@ function ChatBubble() {
         event.preventDefault();
         if (prompt.trim() === "") return;
         try {
-            const response = await fetch('/ask_ai', {
+            const response = await fetch('/api/chatbot/ask_ai', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ prompt: prompt }),
             });
-
+    
             if (!response.ok) {
                 const errorData = await response.json();
                 setError(errorData.error || 'An error occurred');
-                return
+                return;
             }
-
+    
             const data = await response.json();
             setChatHistory([...chatHistory, { prompt: prompt, response: data.result }]);
             setPrompt('');
-            setError(null)
-
+            setError(null);
+    
         } catch (err) {
-            setError(err.message || 'An error occurred')
+            setError(err.message || 'An error occurred');
         }
     };
 
