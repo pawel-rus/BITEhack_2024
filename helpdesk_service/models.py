@@ -21,4 +21,4 @@ class HelpDeskPost(db.Model):
     status = db.Column(db.String(50), default='Open', nullable=False)
     priority = db.Column(db.String(50), default='Normal')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    user = db.relationship('User', backref=db.backref('posts', lazy=True))cd
+    user = db.relationship('User', backref=db.backref('posts', lazy=True))
