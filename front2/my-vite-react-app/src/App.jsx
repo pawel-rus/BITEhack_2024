@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ChatBubble from './components/ChatBubble';
+import Courses from './components/Courses';
+
 import Home from './components/Home';
 import './styles.css';
 
