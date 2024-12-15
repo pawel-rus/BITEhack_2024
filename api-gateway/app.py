@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 import requests
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
@@ -32,6 +33,37 @@ def proxy(service, endpoint):
     print("Response content:", response.text)
     return jsonify(response.json()), response.status_code
     
-    
+# Database configuration
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:GWnQGFuMpUnZxayhsYrtEdGoOnXUxCpd@junction.proxy.rlwy.net:37394/railway'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+class Entry(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(255), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+
+
+@app.route('/get_entries', methods=['GET'])
+def get_entries():
+    with app.app_context():
+        db.create_all()
+        entries = Entry.query.order_by(Entry.id).all()
+        return jsonify([{
+            'id': entry.id,
+            'username': entry.username,
+            'content': entry.content
+        } for entry in entries])
+
+# with app.app_context():
+#     db.create_all()
+#     entries = Entry.query.order_by(Entry.id).all()
+#     print([{
+#         'id': entry.id,
+#         'username': entry.username,
+#         'content': entry.content
+#     } for entry in entries])
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
