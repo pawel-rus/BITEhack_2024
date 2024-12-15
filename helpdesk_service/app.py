@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from auth import generate_jwt, token_required
@@ -70,3 +71,5 @@ def comments(current_user, thread_id):
 if __name__ == '__main__':
     db.create_all()
     app.run(debug=True, port=5001)
+=======
+>>>>>>> 1ceadcfec3fd3e160ed1a99b0b28a506de8acc2b

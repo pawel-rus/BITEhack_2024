@@ -1,66 +1,15 @@
-#chat-form button {
-    font-size: xx-large;
-}
-
-#prompt {
-    font-size: xx-large;
-    /* Rozmiar czcionki w polu tekstowym */
-    padding: 10px;
-}
-
-#chat-bubble {
-    position: fixed;
-    bottom: 60px;
-    right: 60px;
-    width: 75vw;
-    height: 75vh;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    visibility: hidden;
-    /* Dodano, aby uporządkować layout */
-}
-
 #chat-bubble-header {
-    background-color: #b0aeb3; /* Kolor tła nagłówka */
-    color: white; /* Kolor tekstu nagłówka */
+    background-color: #2c2d2e; 
+    color: white; 
     padding: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     text-align: center;
-    cursor: pointer;
-    font-size: xx-large;
-}
-
-#chat-bubble-body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 10px;
-    font-size: xx-large;
-}
-
-#chat-history {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    font-size: xx-large;
-    overflow: hidden;
-}
-
-#chat-form {
-    border-top: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    font-size: xx-large;
+    font-size: 1.2em;
 }
 
 #chat-toggle-button {
-    background-color: #767776; /* Kolor tła przycisku */
+    background-color: #2c2d2e; 
     color: white; /* Kolor tekstu przycisku */
     border: none;
     border-radius: 50%;
@@ -75,19 +24,177 @@
 }
 
 #chat-toggle-button:hover {
-    background-color: #b0aeb3; /* Kolor tła przycisku po najechaniu */
+    background-color: #3CBF9B; /* Kolor tła przycisku po najechaniu */
+}
+
+.user-message, .bot-response {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-align: left;
 }
 
 .user-message {
-    background-color: #555551; /* Kolor tła dla wiadomości użytkownika */
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    background-color: #a8a8a8; /* Kolor tła wiadomości użytkownika */
+    color: white; /* Kolor tekstu wiadomości użytkownika */
 }
 
 .bot-response {
-    background-color: #f1f8e9; /* Kolor tła dla odpowiedzi bota */
+    background-color: #979db9; /* Kolor tła odpowiedzi bota */
+    color: white; /* Kolor tekstu odpowiedzi bota */
+}
+
+.user-message img, .bot-response img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#chat-bubble-body {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 10px;
+    background-size: cover;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: relative;
+}
+
+#chat-bubble-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Biały kolor z przezroczystością */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 1;
+}
+
+#chat-history {
+    position: relative;
+    z-index: 2;
+}
+
+#chat-bubble-footer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #FFFFFF; /* Biały kolor tła formularza */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#chat-form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    flex: 1;
+}
+
+#chat-form button {
+    background-color: #2c2d2e; /* Kolor tła przycisku */
+    color: white; /* Kolor tekstu przycisku */
+    border: none;
     padding: 10px;
     border-radius: 5px;
-    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#chat-form button:hover {
+    background-color: #3CBF9B; /* Kolor tła przycisku po najechaniu */
+}
+
+#model-selector {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.model-button {
+    background-color: #E0E0E0; /* Kolor tła przycisku */
+    color: black; /* Kolor tekstu przycisku */
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.model-button.active {
+    background-color: #2c2d2e; /* Kolor tła aktywnego przycisku */
+    color: white; /* Kolor tekstu aktywnego przycisku */
+}
+
+.model-button:hover {
+    background-color: #B0B0B0; /* Kolor tła przycisku po najechaniu */
+}
+
+#chat-bubble {
+    width: 300px; /* Ustaw szerokość chatboxa */
+    max-width: 90%; /* Ustaw maksymalną szerokość chatboxa */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    visibility: hidden; /* Domyślnie ukryty */
+}
+
+#chat-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #FFFFFF; /* Biały kolor tła formularza */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#chat-bubble-footer {
+    background-color: #F0F0F0; /* Jasny szary kolor tła */
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+}
+
+.loading-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.form-group input {
+    flex: 1;
+    padding-right: 40px; /* Dodaj odstęp na ikonę mikrofonu */
+}
+
+.form-group .btn-secondary {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0; /* Usuń padding */
+}
+
+.microphone-icon {
+    width: 15px;
+    height: 14px;
+    display: block; /* Upewnij się, że ikona jest wyświetlana jako blok */
 }

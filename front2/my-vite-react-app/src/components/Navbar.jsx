@@ -60,6 +60,10 @@ function Navbar() {
                         </li>
                     </ul>
                 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ceadcfec3fd3e160ed1a99b0b28a506de8acc2b
             </div>
         </nav>
     );

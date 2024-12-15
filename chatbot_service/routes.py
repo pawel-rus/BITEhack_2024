@@ -30,7 +30,7 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 llm = Groq(model="llama-3.1-8b-instant", api_key=api_key)
 
 def init_routes(app):  
-    @app.route('/ask_ai', methods=['POST'])
+    @app.route('/ask_groq', methods=['POST'])
     def query_endpoint():
         try:
             index_dir = './final_index'
@@ -70,6 +70,7 @@ def init_routes(app):
             return jsonify({'result':  response.text})
         except Exception as e:
             return jsonify({'error':  f"An error occurred: {e}"})
+<<<<<<< HEAD
         
     @app.route('/courses')
     def courses():
@@ -80,4 +81,6 @@ def init_routes(app):
         return render_template('assistant.html')
 
         
+=======
+>>>>>>> 1ceadcfec3fd3e160ed1a99b0b28a506de8acc2b
         

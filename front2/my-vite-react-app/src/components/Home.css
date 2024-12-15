@@ -1,0 +1,90 @@
+/* Globalne ustawienia */
+body {
+    font-size: 18px;
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f7f7f7;
+}
+
+.home {
+    padding: 30px;
+    max-width: 800px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.home-header h1 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+.home-header p {
+    font-size: 1.4em;
+}
+
+.instructions, .courses-list, .about-us {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.instructions h2, .courses-list h2, .about-us h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+}
+
+.instruction-block {
+    margin-bottom: 20px;
+}
+
+.instruction-block h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.instruction-block p, .instruction-block ol {
+    font-size: 1.2em;
+}
+
+.instruction-block ol li {
+    margin-bottom: 10px;
+}
+
+.courses-list ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.courses-list li {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #e9f5ff;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+.home-footer {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 1em;
+}
+
+.home-footer a {
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.home-footer a:hover {
+    text-decoration: underline;
+}
