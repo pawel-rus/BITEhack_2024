@@ -100,3 +100,12 @@ Docker-Compose automatycznie uruchomi wszystkie mikroserwisy oraz frontend w zin
 ---
 
 Serdecznie zachęcamy do kontaktu z nami!
+
+
+
+![zdj](https://scontent.xx.fbcdn.net/v/t1.15752-9/472924707_564705353109915_3298643274248233454_n.png?stp=dst-png_s720x720&_nc_cat=100&ccb=1-7&_nc_sid=0024fc&_nc_ohc=RT9qg67WaUYQ7kNvgG2vnKi&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1gGFY32R2QBjuc7ZRv1ie6rN40oWdpfzv2Mk7cWREBYMoQ&oe=67A38027)
+![zdj](https://scontent.xx.fbcdn.net/v/t1.15752-9/472198903_1291905752145030_6620408180174984424_n.png?stp=dst-png_s720x720&_nc_cat=104&ccb=1-7&_nc_sid=0024fc&_nc_ohc=D6aVxh70eYwQ7kNvgGgTuBe&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1gF8qIXQn_suKK0c_y5a6erQWaCUIJ_mVkjtRZ4DiFdswQ&oe=67A3A65A)
+![zdj](https://scontent.xx.fbcdn.net/v/t1.15752-9/472995131_415907804845414_6148629235314706125_n.png?stp=dst-png_s720x720&_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_ohc=VsDsyxxRe3QQ7kNvgH7UqtU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1gGLhR891ITxz0aJbxUl_NTTWpHF7t8NDlJzpga7MBJ-TQ&oe=67A3A5E8)
+![zdj](https://scontent.xx.fbcdn.net/v/t1.15752-9/472091751_1502650507098525_6101531369062923946_n.png?stp=dst-png_s720x720&_nc_cat=104&ccb=1-7&_nc_sid=0024fc&_nc_ohc=zfjinCju-KIQ7kNvgGXA5aF&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1gGJn0HKWz1DjvSw9t8L0bkfZfjw5h304PyIJc3Jgy6bRg&oe=67A3919A)
+![zdj](https://scontent.xx.fbcdn.net/v/t1.15752-9/472334007_934542745459669_6384721517262523045_n.png?stp=dst-png_s720x720&_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=n2ZLBZRKZssQ7kNvgGKVZLl&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1gEbbUxwcdqxOKMPw2berN8Qyd4h3DI-bH7oNv4D66iFHQ&oe=67A3A216)
+![zdj](https://scontent.xx.fbcdn.net/v/t1.15752-9/472398647_1814787362665646_5392335792685766580_n.png?stp=dst-png_s720x720&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=QaFK87QnLAoQ7kNvgEgshjE&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1gHD_2CpDZht1cAKLnVXSezu7cWd5ewFGD1z7f4O5_Mp9w&oe=67A37639)
