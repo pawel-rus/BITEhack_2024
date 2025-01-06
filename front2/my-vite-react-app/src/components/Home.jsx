@@ -4,7 +4,7 @@ import './Home.css';
 function Home() {
     return (
         <div className="home">
-            <header className="home-header">
+            <header className="home-header" style={{ marginTop: '59px' }}>
                 <h1>Witamy w Centrum Edukacyjnym!</h1>
                 <p>Prosta nauka dla każdego, w każdym wieku.</p>
             </header>
@@ -32,11 +32,11 @@ function Home() {
             
             <section className="about-us">
                 <h2><span role="img" aria-label="about us">👨‍🏫</span> O nas</h2>
-                <p>Jesteśmy zespołem, który pasjonuje się edukacją i nowymi technologiami.</p>
+                <p>Zespół zapalonych, zajawionych młodych developerów!</p>
             </section>
 
             <footer className="home-footer">
-                <p>&copy; 2024 Nasza Firma. Wszelkie prawa zastrzeżone.</p>
+                <p>&copy; 2024 TeleCoders.</p>
                 <Link to="/privacy-policy">Polityka prywatności</Link> | 
                 <Link to="/contact">Kontakt</Link>
             </footer>

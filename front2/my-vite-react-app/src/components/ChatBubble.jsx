@@ -145,7 +145,11 @@ function ChatBubble() {
                                 onChange={(e) => setPrompt(e.target.value)}
                                 placeholder="Your Question:" // Dodaj placeholder
                             />
-                            <button type="button" className="btn btn-secondary" onClick={handleVoiceInput}>
+                            <button
+                                type="button"
+                                className="btn btn-secondary microphone-button"
+                                onClick={handleVoiceInput}
+                                style={{ backgroundColor: 'whitesmoke', color: '#ffffff' }}>
                                 <img src={microphoneIcon} alt="Microphone" className="microphone-icon" />
                             </button>
                         </div>
