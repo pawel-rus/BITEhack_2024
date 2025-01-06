@@ -101,6 +101,9 @@ Docker-Compose automatycznie uruchomi wszystkie mikroserwisy oraz frontend w zin
 
 Serdecznie zachęcamy do kontaktu z nami!
 
+<br>
+<br>
+<br>
 
 
 ![zdj](https://scontent.xx.fbcdn.net/v/t1.15752-9/472924707_564705353109915_3298643274248233454_n.png?stp=dst-png_s720x720&_nc_cat=100&ccb=1-7&_nc_sid=0024fc&_nc_ohc=RT9qg67WaUYQ7kNvgG2vnKi&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1gGFY32R2QBjuc7ZRv1ie6rN40oWdpfzv2Mk7cWREBYMoQ&oe=67A38027)
